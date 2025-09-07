@@ -79,30 +79,9 @@ O diagrama acima representa a relação entre as entidades principais, incluindo
 
 ---
 
-## 📨 Mensageria com Kafka
-
-* **`app.kafka.topic.order-finalized`** → Nome do **tópico Kafka** onde serão publicadas as mensagens de pedidos finalizados.
-  Exemplo: sempre que um pedido é concluído, uma mensagem é enviada para esse tópico.
-
-* **`spring.kafka.consumer.group-id`** → Identificador do **grupo de consumidores**.
-  Todos os consumidores com o mesmo `group-id` compartilham a carga das mensagens do tópico.
-  Isso garante **paralelismo** e **balanceamento** — cada mensagem é entregue para apenas um consumidor dentro do grupo.
-
-### 🌐 Interface de Visualização
-
-* **Kafka UI:** [http://localhost:8083/ui/](http://localhost:8083/ui/)
-
-Acesse para visualizar:
-
-* 📋 Lista de tópicos disponíveis
-* 📦 Mensagens enviadas e recebidas
-* 👥 Grupos de consumidores ativos e seus offsets
-
----
-
 ## 🔑 Segurança com Keycloak
 
-### 📍 Acesso pelo Host (Windows/Linux)
+### 📍 Configuração do Host (Windows/Linux)
 
 Para acessar o **Keycloak** pelo **nome do serviço** `keycloak` a partir do **host**, adicione a entrada no arquivo *hosts* do sistema:
 
@@ -122,14 +101,29 @@ Para acessar o **Keycloak** pelo **nome do serviço** `keycloak` a partir do **h
 ### ➡️ Console de Administração
 
 * **URL:** [http://keycloak:8081/](http://keycloak:8081/)
-* **Usuário:** `admin` *(ou o valor definido em `KEYCLOAK_ADMIN`)*
-* **Senha:** `admin` *(ou o valor definido em `KEYCLOAK_ADMIN_PASSWORD`)*
+* **Usuário:** `admin` 
+* **Senha:** `admin` 
 
-**Validação da aplicação:**
+---
 
-* **URL:** [http://keycloak:8080/actuator/health](http://keycloak:8080/actuator/health)
+## 📨 Mensageria com Kafka
 
-> 💡 **Observação:** arquivo `app-demo-realm.json` contém as configurações iniciais do realm.
+* **`app.kafka.topic.order-finalized`** → Nome do **tópico Kafka** onde serão publicadas as mensagens de pedidos finalizados.
+  Exemplo: sempre que um pedido é concluído, uma mensagem é enviada para esse tópico.
+
+* **`spring.kafka.consumer.group-id`** → Identificador do **grupo de consumidores**.
+  Todos os consumidores com o mesmo `group-id` compartilham a carga das mensagens do tópico.
+  Isso garante **paralelismo** e **balanceamento** — cada mensagem é entregue para apenas um consumidor dentro do grupo.
+
+### 🌐 Interface de Visualização
+
+* **Kafka UI:** [http://localhost:8083/ui/](http://localhost:8083/ui/)
+
+Acesse para visualizar:
+
+* 📋 Lista de tópicos disponíveis
+* 📦 Mensagens enviadas e recebidas
+* 👥 Grupos de consumidores ativos e seus offsets
 
 ---
 
@@ -172,10 +166,6 @@ $body = @{
   username   = "appdemo"
   password   = "123"
   grant_type = "password"
-  # Se o client for confidential:
-  # client_secret = "<SEU_CLIENT_SECRET>"
-  # Se exigir 2FA:
-  # totp = "123456"
 }
 
 $TOKEN = (Invoke-RestMethod -Method Post `
