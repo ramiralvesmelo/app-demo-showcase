@@ -32,6 +32,29 @@ O **app-demo** é uma aplicação de demonstração que simula um sistema **ERP 
 
 ---
 
+## ⚙️ Pré-requisitos
+
+* [Docker](https://www.docker.com/) MCP CLI v0.16.0 ou superior
+
+---
+
+## 🚀 Como Inicializar o Projeto
+
+Para facilitar o processo de desenvolvimento, utilize os comandos abaixo com o **Docker Compose** já configurado em `infra/docker/docker-compose.yml`:
+
+```bash
+# 🟢 Subir todos os serviços em segundo plano
+docker compose -f infra/docker/docker-compose.yml up -d
+
+# 🔴 Derrubar todos os serviços e containers
+docker compose -f infra/docker/docker-compose.yml down
+
+# 📜 Visualizar logs do container principal da aplicação
+docker compose -f infra/docker/docker-compose.yml logs -f app-demo
+```
+
+---
+
 ## 🛢️ Modelo de Dados e Estrutura de Entidades
 
 O modelo de dados da aplicação foi desenhado para refletir um fluxo simplificado de **ERP**, abrangendo as principais entidades de negócio:
@@ -56,80 +79,7 @@ O diagrama acima representa a relação entre as entidades principais, incluindo
 
 ---
 
-## 🗂️ Estrutura do Projeto
-
-```text
-app-demo/
-├── .github/                               		# Configurações do GitHub
-│   └── workflows/                         		# Actions (CI)
-│       └── maven.yml                      		# Pipeline Maven (build, testes, etc.)
-├── infra/                                 		# Infra local e ferramentas
-│   ├── docker/                            		# Docker / Compose da stack
-│   │   ├── docker-compose.yml             		# Subir app + dependências (Postgres, Kafka, Redis, Keycloak)
-│   │   └── Dockerfile                     		# Imagem da aplicação (JDK 21)
-│   ├── insonia/                           		# Coleções do Insomnia
-│   │   └── app-demo-collection.yaml       		# Requests prontos (inclui auth)
-│   ├── jmeter/                            		# Testes de carga/performance
-│   │   └── post-customers-10000-random.jmx		# Script exemplo JMeter
-│   └── keycloak/                          		# Realm e dados do Keycloak
-│       └── realms/		
-│           ├── app-demo-realm.json        		# Realm com clients/roles/flows iniciais
-│           └── h2/                        		# Base H2 do Keycloak (modo DEV)
-├── src/
-│   ├── main/
-│   │   ├── java/
-│   │   │   └── br/com/springboot/appdemo/ 		# Código-fonte principal
-│   │   │       ├── Application.java       		# Classe bootstrap Spring Boot
-│   │   │       ├── config/                		# Configurações (Security, Kafka, Transação, Web, etc.)
-│   │   │       ├── controller/            		# REST Controllers
-│   │   │       ├── exception/             		# Exceções de negócio e handler global
-│   │   │       ├── message/               		# Eventos e integração (Kafka)
-│   │   │       ├── model/                 		# DTOs e Entidades JPA
-│   │   │       ├── repository/            		# Repositórios (interfaces + impl custom)
-│   │   │       ├── service/               		# Interfaces e serviços (impl)
-│   │   │       └── util/                  		# Utilitários (email, número de pedido, segurança)
-│   │   └── resources/		
-│   │       ├── application.properties     		# ⚙️ Config padrão (perfil default)
-│   │       ├── application-docker.properties 	# ⚙️ Config para perfil `docker`
-│   │       ├── schema.sql                 		# DDL inicial (dev/test)
-│   │       └── data.sql                   		# Dados de exemplo (dev/test)
-│   └── test/		
-│       ├── java/                          		# Testes unitários/integração
-│       └── resources/
-│           └── application-test.properties		# Config de testes
-├── .dockerignore
-├── .gitignore
-├── pom.xml                                		# Projeto Maven
-└── README.md                              		# Este arquivo
-```
----
-
-## ⚙️ Pré-requisitos
-
-* [Docker](https://www.docker.com/) MCP CLI v0.16.0 ou superior
-
----
-
-## 🚀 Como Inicializar o Projeto
-
-Para facilitar o processo de desenvolvimento, utilize os comandos abaixo com o **Docker Compose** já configurado em `infra/docker/docker-compose.yml`:
-
-```bash
-# 🟢 Subir todos os serviços em segundo plano
-docker compose -f infra/docker/docker-compose.yml up -d
-
-# 🔴 Derrubar todos os serviços e containers
-docker compose -f infra/docker/docker-compose.yml down
-
-# 📜 Visualizar logs do container principal da aplicação
-docker compose -f infra/docker/docker-compose.yml logs -f app-demo
-```
-
----
-
-## 📨 Kafka
-
-###
+## 📨 Mensageria com Kafka
 
 * **`app.kafka.topic.order-finalized`** → Nome do **tópico Kafka** onde serão publicadas as mensagens de pedidos finalizados.
   Exemplo: sempre que um pedido é concluído, uma mensagem é enviada para esse tópico.
@@ -150,7 +100,7 @@ Acesse para visualizar:
 
 ---
 
-## 🔑 Keycloak
+## 🔑 Segurança com Keycloak
 
 ### 📍 Acesso pelo Host (Windows/Linux)
 
@@ -183,7 +133,7 @@ Para acessar o **Keycloak** pelo **nome do serviço** `keycloak` a partir do **h
 
 ---
 
-#### 🌐 Collection de Endpoints 
+#### 🌐 Rest API Collection de Endpoints 
 
 👉 [Baixar `app-demo-collection.yaml`](./infra/insonia/app-demo-collection.yaml)
 
@@ -342,6 +292,55 @@ gitGraph
 | **feature/** | Desenvolvimento de novas funcionalidades a partir de `develop`                |
 | **release/** | Preparação de versões, testes e ajustes finais antes de ir para `main`        |
 | **hotfix/**  | Correções urgentes criadas a partir de `main`, voltam para `main` e `develop` |
+
+---
+
+## 🗂️ Estrutura do Projeto
+
+```text
+app-demo/
+├── .github/                               		# Configurações do GitHub
+│   └── workflows/                         		# Actions (CI)
+│       └── maven.yml                      		# Pipeline Maven (build, testes, etc.)
+├── infra/                                 		# Infra local e ferramentas
+│   ├── docker/                            		# Docker / Compose da stack
+│   │   ├── docker-compose.yml             		# Subir app + dependências (Postgres, Kafka, Redis, Keycloak)
+│   │   └── Dockerfile                     		# Imagem da aplicação (JDK 21)
+│   ├── insonia/                           		# Coleções do Insomnia
+│   │   └── app-demo-collection.yaml       		# Requests prontos (inclui auth)
+│   ├── jmeter/                            		# Testes de carga/performance
+│   │   └── post-customers-10000-random.jmx		# Script exemplo JMeter
+│   └── keycloak/                          		# Realm e dados do Keycloak
+│       └── realms/		
+│           ├── app-demo-realm.json        		# Realm com clients/roles/flows iniciais
+│           └── h2/                        		# Base H2 do Keycloak (modo DEV)
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── br/com/springboot/appdemo/ 		# Código-fonte principal
+│   │   │       ├── Application.java       		# Classe bootstrap Spring Boot
+│   │   │       ├── config/                		# Configurações (Security, Kafka, Transação, Web, etc.)
+│   │   │       ├── controller/            		# REST Controllers
+│   │   │       ├── exception/             		# Exceções de negócio e handler global
+│   │   │       ├── message/               		# Eventos e integração (Kafka)
+│   │   │       ├── model/                 		# DTOs e Entidades JPA
+│   │   │       ├── repository/            		# Repositórios (interfaces + impl custom)
+│   │   │       ├── service/               		# Interfaces e serviços (impl)
+│   │   │       └── util/                  		# Utilitários (email, número de pedido, segurança)
+│   │   └── resources/		
+│   │       ├── application.properties     		# ⚙️ Config padrão (perfil default)
+│   │       ├── application-docker.properties 	# ⚙️ Config para perfil `docker`
+│   │       ├── schema.sql                 		# DDL inicial (dev/test)
+│   │       └── data.sql                   		# Dados de exemplo (dev/test)
+│   └── test/		
+│       ├── java/                          		# Testes unitários/integração
+│       └── resources/
+│           └── application-test.properties		# Config de testes
+├── .dockerignore
+├── .gitignore
+├── pom.xml                                		# Projeto Maven
+└── README.md                              		# Este arquivo
+```
 
 ---
 
