@@ -15,7 +15,20 @@
 
 ![Integração do App Demo](infra/img/app-demo-integration.drawio.png)
 
-O **app-demo** é uma aplicação de demonstração que simula um sistema **ERP (Enterprise Resource Planning)** em pequena escala, com módulos de:
+# 📘 Sobre o Projeto
+
+O **app-demo** é uma aplicação de demonstração que simula um sistema **ERP (Enterprise Resource Planning)** em pequena escala. Ele foi desenvolvido como base de estudos e treinamentos, oferecendo uma arquitetura modular e integrando diversos recursos práticos do ecossistema Java e Spring Boot.
+
+## 🔑 Recursos e Funcionalidades
+
+* **Arquitetura ERP simplificada** — módulos de clientes, pedidos e produtos, cobrindo fluxo básico de um sistema de gestão.
+* **Persistência de dados** — implementada com **JPA/Hibernate**, utilizando **PostgreSQL** (produção) e **H2** (ambiente de testes).
+* **Mensageria assíncrona** — integração com **Apache Kafka** para publicação e consumo de eventos, como finalização de pedidos.
+* **Cache distribuído** — uso de **Redis** para otimizar acessos e reduzir carga em consultas repetitivas.
+* **Autenticação e Autorização** — baseada em **Keycloak**, com suporte a OAuth2/OpenID Connect.
+* **APIs RESTful** — endpoints expostos para CRUD de entidades e fluxo de negócios (ex.: criação de pedidos).
+* **Testes Automatizados** — cobertura com **JUnit 5** e **Mockito**.
+* **Monitoramento** — suporte ao **Spring Actuator**, permitindo verificar métricas e saúde da aplicação.
 
 * Cadastro de clientes
 * Produtos e estoque
@@ -23,7 +36,7 @@ O **app-demo** é uma aplicação de demonstração que simula um sistema **ERP 
 
 ![MER-001](infra/img/mer-001.png)
 
-Objetivo: servir como **estudo de caso prático**, aplicando boas práticas de arquitetura, desenvolvimento e DevOps em um ambiente próximo ao real.
+> 💡 Essa aplicação é ideal para treinar conceitos de **Java moderno**, **Spring Boot**, **DevOps com Docker** e boas práticas de integração entre serviços.
 
 ---
 
@@ -77,25 +90,22 @@ app-demo/
 
 ## ⚙️ Pré-requisitos
 
-* [Java 21+](https://adoptium.net/)
-* [Maven 3.8+](https://maven.apache.org/)
 * [Docker](https://www.docker.com/) MCP CLI v0.16.0 ou superior
-* [Lombok](https://projectlombok.org/setup/) configurado na IDE
-* [DBeaver](https://dbeaver.io/) (cliente universal para bancos de dados)
-* [Eclipse STS (Spring Tool Suite)](https://spring.io/tools) (IDE otimizada para Spring)
 
 ---
 
-## 🚀 Como Inicializar
+## 🚀 Como Inicializar o Projeto
+
+Para facilitar o processo de desenvolvimento, utilize os comandos abaixo com o **Docker Compose** já configurado em `infra/docker/docker-compose.yml`:
 
 ```bash
-# Subir todos os serviços
-docker compose -f infra/docker/docker-compose.yml up -d --build
+# 🟢 Subir todos os serviços em segundo plano
+docker compose -f infra/docker/docker-compose.yml up -d
 
-# Derrubar tudo
+# 🔴 Derrubar todos os serviços e containers
 docker compose -f infra/docker/docker-compose.yml down
 
-# Logs do app
+# 📜 Visualizar logs do container principal da aplicação
 docker compose -f infra/docker/docker-compose.yml logs -f app-demo
 ```
 
