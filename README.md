@@ -11,15 +11,15 @@
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=ramiralvesmelo_app-demo\&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=ramiralvesmelo_app-demo)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
----
+_**badges referentes ao projeto original_
 
-![Integração do App Demo](infra/img/app-demo-integration.drawio.png)
+---
 
 # 📘 Sobre o Projeto
 
 O **app-demo** é uma aplicação de demonstração que simula um sistema **ERP (Enterprise Resource Planning)** em pequena escala. Ele foi desenvolvido como base de estudos e treinamentos, oferecendo uma arquitetura modular e integrando diversos recursos práticos do ecossistema Java e Spring Boot.
 
-## 🔑 Recursos e Funcionalidades
+![Integração do App Demo](infra/img/app-demo-integration.drawio.png)
 
 * **Arquitetura ERP simplificada** — módulos de clientes, pedidos e produtos, cobrindo fluxo básico de um sistema de gestão.
 * **Persistência de dados** — implementada com **JPA/Hibernate**, utilizando **PostgreSQL** (produção) e **H2** (ambiente de testes).
@@ -30,13 +30,29 @@ O **app-demo** é uma aplicação de demonstração que simula um sistema **ERP 
 * **Testes Automatizados** — cobertura com **JUnit 5** e **Mockito**.
 * **Monitoramento** — suporte ao **Spring Actuator**, permitindo verificar métricas e saúde da aplicação.
 
-* Cadastro de clientes
-* Produtos e estoque
-* Pedidos e vendas
+---
+
+## 🛢️ Modelo de Dados e Estrutura de Entidades
+
+O modelo de dados da aplicação foi desenhado para refletir um fluxo simplificado de **ERP**, abrangendo as principais entidades de negócio:
+
+* 👥 **Clientes** — informações cadastrais de clientes.
+* 📦 **Produtos & Estoque** — catálogo de produtos com controle de disponibilidade.
+* 🛒 **Pedidos & Vendas** — registro de pedidos, itens e totalização.
+
+### 📊 Diagrama Entidade-Relacionamento (MER)
 
 ![MER-001](infra/img/mer-001.png)
 
-> 💡 Essa aplicação é ideal para treinar conceitos de **Java moderno**, **Spring Boot**, **DevOps com Docker** e boas práticas de integração entre serviços.
+O diagrama acima representa a relação entre as entidades principais, incluindo chaves primárias e estrangeiras que garantem integridade referencial.
+
+### 🔗 Conexão com o Banco de Dados
+
+* **URL JDBC:** `jdbc:postgresql://localhost:5432/appdb`
+* **Usuário:** `appuser`
+* **Senha:** `appuser`
+
+> 💡 **Dica:** para inspecionar o banco, você pode utilizar ferramentas como **DBeaver** ou **pgAdmin**, conectando-se com as credenciais acima.
 
 ---
 
