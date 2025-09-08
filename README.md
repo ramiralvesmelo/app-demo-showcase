@@ -24,7 +24,9 @@
 
 # 📘 Sobre o Projeto
 
-O **app-demo** é uma aplicação de demonstração que simula um sistema **ERP (Enterprise Resource Planning)** em pequena escala. Ele foi desenvolvido como base de estudos e treinamentos, oferecendo uma arquitetura modular e integrando diversos recursos práticos do ecossistema Java e Spring Boot.
+O **app-demo** é uma aplicação de demonstração que simula um sistema **ERP (Enterprise Resource Planning)** em pequena escala. Ele foi desenvolvido como base de estudos e treinamentos, oferecendo uma arquitetura modular e integrando diversos recursos práticos do ecossistema Java e Spring Boot. 
+
+O projeto também conta com um workflow de CI/CD totalmente automatizado no GitHub Actions, responsável por assegurar a **qualidade do código**, manter a **cobertura de testes**, realizar **análises estáticas** como SonarCloud e CodeCov, gerar o **SBOM** (Software Bill of Materials) e garantir a entrega contínua de artefatos e imagens Docker.
 
 ![Integração do App Demo](infra/img/app-demo-integration.drawio.png)
 
@@ -102,24 +104,37 @@ O diagrama acima representa a relação entre as entidades principais, incluindo
 
 ---
 
-## 🔄 Integração Contínua (CI/CD)
+## 🚀 Workflow (GitHub Actions)
 
-### Workflows em `.github/workflows`
+Este workflow automatiza as etapas de **CI/CD** para o projeto, contemplando análise de código, cobertura de testes, publicação de pacotes e imagens em repositórios.
 
-* ⚙️ **Build** → Compila e empacota o projeto (Maven).
-* 🧪 **Testes** → Executa a testes unitários e integração na suíte automatizada (JUnit 5 + Mockito).
-* 🩺 **Check Health** → Exibe, por meio de badges, a saúde do projeto (Sonar + Codecov).
-* 📦 **Publicação** → Publica o artefato no GitHub Packages.
+### 🔍 CI – Integração Contínua
 
-### Integrações principais
+* 📥 **Checkout** do repositório.
+* ⚙️ **Configuração do JDK 24** e cache do Maven.
+* 🔎 **Verificação de versões** (Java e Maven).
+* 🛠️ **Build + Test + Coverage** com JaCoCo.
+* 📈 **Envio do relatório de cobertura** para o Codecov.
+* 🔎 **Análise no SonarCloud** com verificação de *Quality Gate*.
+* 📦 **Geração do SBOM** (CycloneDX).
+* 📤 **Upload do SBOM** como artefato do workflow.
+* 📊 **Envio do snapshot de dependências** para o Dependabot/Graph.
 
-* 📊 **Cobertura de testes no Codecov** → Ajuda a identificar partes críticas ainda sem testes, apresentando a porcentagem de código testado.
-* ☁️ **Análise contínua no SonarCloud** → Detecta problemas e mantém padrões de qualidade analisando: bugs, vulnerabilidades e duplicidade.
-* 📦 **Publicação de pacotes no GitHub Packages** → Facilita reuso e compartilhamento em outros projetos armazenando versões dos artefatos do projeto.
-* 📈 **Dependency Graph** → Aumenta a visibilidade e permite detectar riscos em bibliotecas externas de forma automática.
-* 📄 **SBOM (CycloneDX)** → Fornece rastreabilidade e suporte à auditorias de segurança, criando inventário dos componentes.
-* 🚨 **Dependabot Alerts** → Alerta automatico monitorando e comunicando vulnerabilidades conhecidas em dependências.
-* 🏷️ **Badges** no README → Comunicação clara e imediata para a equipe e comunidade com indicadores visuais de saúde do projeto.
+### 🚀 CD – Entrega Contínua
+
+* 📥 **Checkout** do repositório.
+* ⚙️ **Configuração do JDK 24** e cache do Maven.
+* 🔐 **Configuração de credenciais Maven (settings.xml)**.
+* 🐈‍⬛ **Deploy no GitHub Packages** (Maven Repository).
+* 🧱 **Configuração do Docker Buildx**.
+* 🔑 **Login no GHCR** (GitHub Container Registry).
+* 🏷️ **Definição de metadados** (tags/labels da imagem Docker).
+* 🐈‍⬛ **Build & Push da imagem** no GHCR.
+* 🔑 **Login no Docker Hub**.
+* 🐋 **Build & Push da imagem** no Docker Hub.
+
+
+✅ Com esse fluxo, garantimos qualidade de código, rastreabilidade das dependências e entrega automatizada de artefatos e imagens.
 
 ---
 
