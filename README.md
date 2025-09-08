@@ -67,20 +67,6 @@ docker compose -f infra/docker/docker-compose.yml logs -f app-demo
 
 ---
 
-## 🛢️ Modelo de Dados e Estrutura de Entidades
-
-O modelo de dados da aplicação foi desenhado para refletir um fluxo simplificado de **ERP**, abrangendo as principais entidades de negócio:
-
-* 👥 **Clientes** — informações cadastrais de clientes.
-* 📦 **Produtos & Estoque** — catálogo de produtos com controle de disponibilidade.
-* 🛒 **Pedidos & Vendas** — registro de pedidos, itens e totalização.
-
-### 📊 Diagrama Entidade-Relacionamento (MER)
-
-![MER-001](infra/img/mer-001.png)
-
-O diagrama acima representa a relação entre as entidades principais, incluindo chaves primárias e estrangeiras que garantem integridade referencial.
-
 ## 🌐 URLs de Acesso
 
 | Serviço         | URL / Endereço                                                                 | Usuário | Senha   |
@@ -95,6 +81,22 @@ O diagrama acima representa a relação entre as entidades principais, incluindo
 | **Redis**       | `localhost:6379`                                                               | -       | -       |
 | **Redis UI**    | [http://localhost:8082](http://localhost:8082)                                 | -       | -       |
 | **Kafka UI**    | [http://localhost:8083/ui/](http://localhost:8083/ui/)                         | -       | -       |
+
+---
+
+## 🛢️ Modelo de Dados e Estrutura de Entidades
+
+O modelo de dados da aplicação foi desenhado para refletir um fluxo simplificado de **ERP**, abrangendo as principais entidades de negócio:
+
+* 👥 **Clientes** — informações cadastrais de clientes.
+* 📦 **Produtos & Estoque** — catálogo de produtos com controle de disponibilidade.
+* 🛒 **Pedidos & Vendas** — registro de pedidos, itens e totalização.
+
+### 📊 Diagrama Entidade-Relacionamento (MER)
+
+![MER-001](infra/img/mer-001.png)
+
+O diagrama acima representa a relação entre as entidades principais, incluindo chaves primárias e estrangeiras que garantem integridade referencial.
 
 ---
 
