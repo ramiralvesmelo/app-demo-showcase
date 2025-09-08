@@ -5,13 +5,20 @@
 [![Java](https://img.shields.io/badge/Java-21-blue.svg?logo=java)](https://adoptium.net/)
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.5.5-brightgreen.svg?logo=springboot)](https://spring.io/projects/spring-boot)
 [![Coverage Status](https://img.shields.io/codecov/c/github/ramiralvesmelo/app-demo?logo=codecov)](https://app.codecov.io/gh/ramiralvesmelo/app-demo)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=ramiralvesmelo_app-demo\&metric=alert_status)](https://sonarcloud.io/dashboard?id=ramiralvesmelo_app-demo)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=ramiralvesmelo_app-demo\&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=ramiralvesmelo_app-demo)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=ramiralvesmelo_app-demo\&metric=security_rating)](https://sonarcloud.io/dashboard?id=ramiralvesmelo_app-demo)
-[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=ramiralvesmelo_app-demo\&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=ramiralvesmelo_app-demo)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-_**badges referentes ao projeto original_
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=ramiralvesmelo_app-demo&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=ramiralvesmelo_app-demo)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=ramiralvesmelo_app-demo&metric=bugs)](https://sonarcloud.io/summary/new_code?id=ramiralvesmelo_app-demo)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=ramiralvesmelo_app-demo&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=ramiralvesmelo_app-demo)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=ramiralvesmelo_app-demo&metric=coverage)](https://sonarcloud.io/summary/new_code?id=ramiralvesmelo_app-demo)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=ramiralvesmelo_app-demo&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=ramiralvesmelo_app-demo)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=ramiralvesmelo_app-demo&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=ramiralvesmelo_app-demo)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=ramiralvesmelo_app-demo&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=ramiralvesmelo_app-demo)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=ramiralvesmelo_app-demo&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=ramiralvesmelo_app-demo)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=ramiralvesmelo_app-demo&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=ramiralvesmelo_app-demo)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=ramiralvesmelo_app-demo&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=ramiralvesmelo_app-demo)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=ramiralvesmelo_app-demo&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=ramiralvesmelo_app-demo)
+
+⚠️ Importante: badges referentes ao projeto original
 
 ---
 
@@ -42,14 +49,19 @@ O **app-demo** é uma aplicação de demonstração que simula um sistema **ERP 
 
 Para facilitar o processo de desenvolvimento, utilize os comandos abaixo com o **Docker Compose** já configurado em `infra/docker/docker-compose.yml`:
 
+### 🟢 Subir todos os serviços em segundo plano
 ```bash
-# 🟢 Subir todos os serviços em segundo plano
 docker compose -f infra/docker/docker-compose.yml up -d
+```
 
-# 🔴 Derrubar todos os serviços e containers
+### 🔴 Derrubar todos os serviços e containers
+```bash
+
 docker compose -f infra/docker/docker-compose.yml down
+```
 
-# 📜 Visualizar logs do container principal da aplicação
+### 📜 Visualizar logs do container principal da aplicação
+```bash
 docker compose -f infra/docker/docker-compose.yml logs -f app-demo
 ```
 
@@ -69,40 +81,20 @@ O modelo de dados da aplicação foi desenhado para refletir um fluxo simplifica
 
 O diagrama acima representa a relação entre as entidades principais, incluindo chaves primárias e estrangeiras que garantem integridade referencial.
 
-### 🔗 Conexão com o Banco de Dados
+## 🌐 URLs de Acesso
 
-* **URL JDBC:** `jdbc:postgresql://localhost:5432/appdb`
-* **Usuário:** `appuser`
-* **Senha:** `appuser`
-
-> 💡 **Dica:** para inspecionar o banco, você pode utilizar ferramentas como **DBeaver** ou **pgAdmin**, conectando-se com as credenciais acima.
-
----
-
-## 🔑 Segurança com Keycloak
-
-### 📍 Configuração do Host (Windows/Linux)
-
-Para acessar o **Keycloak** pelo **nome do serviço** `keycloak` a partir do **host**, adicione a entrada no arquivo *hosts* do sistema:
-
-```text
-127.0.0.1   keycloak
-```
-
-**Caminhos dos arquivos de hosts:**
-
-* 🪟 **Windows:** `C:\Windows\System32\drivers\etc\hosts`
-* 🐧 **Linux:** `/etc/hosts`
-
-> 📌 Observação: dentro da **rede do Docker Compose**, o DNS já resolve `keycloak`. O ajuste acima é apenas para o **host** conseguir acessar `http://keycloak:8081/` (útil quando o *issuer* do token ou a documentação referem-se a `keycloak:8081`).
-
----
-
-### ➡️ Console de Administração
-
-* **URL:** [http://keycloak:8081/](http://keycloak:8081/)
-* **Usuário:** `admin` 
-* **Senha:** `admin` 
+| Serviço         | URL / Endereço                                                                 | Usuário | Senha   |
+| --------------- | ------------------------------------------------------------------------------ | ------- | ------- |
+| **App-demo**    | [http://localhost:8080](http://localhost:8080)                                 | -       | -       |
+| **Swagger UI**  | [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html) | -       | -       |
+| **Keycloak**    | [http://keycloak:8081](http://keycloak:8081)                                   | admin   | admin   |
+| **Healthcheck** | [http://keycloak:8080/actuator/health](http://keycloak:8080/actuator/health)   | -       | -       |
+| **PostgreSQL**  | `jdbc:postgresql://localhost:5432/appdb`                                       | appuser | apppass |
+| **H2**          | `jdbc:h2:mem:testdb`                                                           | sa      | -       |
+| **H2 Console**  | [/h2-console](http://localhost:8080/h2-console)                                | sa      | -       |
+| **Redis**       | `localhost:6379`                                                               | -       | -       |
+| **Redis UI**    | [http://localhost:8082](http://localhost:8082)                                 | -       | -       |
+| **Kafka UI**    | [http://localhost:8083/ui/](http://localhost:8083/ui/)                         | -       | -       |
 
 ---
 
@@ -115,88 +107,6 @@ Para acessar o **Keycloak** pelo **nome do serviço** `keycloak` a partir do **h
   Todos os consumidores com o mesmo `group-id` compartilham a carga das mensagens do tópico.
   Isso garante **paralelismo** e **balanceamento** — cada mensagem é entregue para apenas um consumidor dentro do grupo.
 
-### 🌐 Interface de Visualização
-
-* **Kafka UI:** [http://localhost:8083/ui/](http://localhost:8083/ui/)
-
-Acesse para visualizar:
-
-* 📋 Lista de tópicos disponíveis
-* 📦 Mensagens enviadas e recebidas
-* 👥 Grupos de consumidores ativos e seus offsets
-
----
-
-#### 🌐 Rest API Collection de Endpoints 
-
-👉 [Baixar `app-demo-collection.yaml`](./infra/insonia/app-demo-collection.yaml)
-
-**Como importar:**
-
-1. Abra o **Postman** ou **Insomnia**
-2. Clique em **Import > File**
-3. Selecione o arquivo `app-demo-collection.yaml`
-
-> 💡 Na **collection do Postman** já existe a requisição pronta para obter o token.
-> O passo a passo manual abaixo é útil para entender e testar via **curl**.
-
----
-
-### 🖥️ Exemplo via **cURL** (Linux/macOS)
-
-```sh
-export TOKEN=$(curl -s \
-  -d "client_id=app-demo-api" \
-  -d "username=appdemo" \
-  -d "password=123" \
-  -d "grant_type=password" \
-  http://keycloak:8081/realms/app-demo/protocol/openid-connect/token | jq -r .access_token)
-
-echo $TOKEN
-
-# Teste de requisição (resposta 200 se autenticado)
-curl -s -H "Authorization: Bearer $TOKEN" http://keycloak:8080/api/products
-```
-
-### 🖥️ Exemplo via **PowerShell** (Windows)
-
-```powershell
-$body = @{
-  client_id  = "app-demo-api"
-  username   = "appdemo"
-  password   = "123"
-  grant_type = "password"
-}
-
-$TOKEN = (Invoke-RestMethod -Method Post `
-  -Uri "http://keycloak:8081/realms/app-demo/protocol/openid-connect/token" `
-  -ContentType "application/x-www-form-urlencoded" `
-  -Body $body).access_token
-
-# Teste de requisição (resposta 200 se autenticado)
-Invoke-RestMethod -Method Get `
-  -Uri "http://keycloak:8080/api/products" `
-  -Headers @{ Authorization = "Bearer $TOKEN" }
-```
-
----
-
-## 📊 JMeter – Testes de Carga
-
-```sh
-# Linux
-rm -rf /temp/jmeter/
-mkdir -p /temp/jmeter/
-
-# Windows
-Remove-Item -Recurse -Force "/temp/jmeter"
-New-Item -ItemType Directory -Path "/temp/jmeter"
-
-# Executar plano de teste
-jmeter -n -t post-customers-10000-random.jmx \
-  -l /temp/jmeter/results.jtl \
-  -e -o /temp/jmeter/report
-```
 ---
 
 ## 🔄 Integração Contínua (CI/CD)
@@ -332,6 +242,24 @@ app-demo/
 └── README.md                              		# Este arquivo
 ```
 
+---
+
+## 📊 JMeter – Testes de Carga
+
+```sh
+# Linux
+rm -rf /temp/jmeter/
+mkdir -p /temp/jmeter/
+
+# Windows
+Remove-Item -Recurse -Force "/temp/jmeter"
+New-Item -ItemType Directory -Path "/temp/jmeter"
+
+# Executar plano de teste
+jmeter -n -t post-customers-10000-random.jmx \
+  -l /temp/jmeter/results.jtl \
+  -e -o /temp/jmeter/report
+```
 ---
 
 ## 📜 Licença
