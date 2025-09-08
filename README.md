@@ -28,15 +28,6 @@ O **app-demo** é uma aplicação de demonstração que simula um sistema **ERP 
 
 ![Integração do App Demo](infra/img/app-demo-integration.drawio.png)
 
-* **Arquitetura ERP simplificada** — módulos de clientes, pedidos e produtos, cobrindo fluxo básico de um sistema de gestão.
-* **Persistência de dados** — implementada com **JPA/Hibernate**, utilizando **PostgreSQL** (produção) e **H2** (ambiente de testes).
-* **Mensageria assíncrona** — integração com **Apache Kafka** para publicação e consumo de eventos, como finalização de pedidos.
-* **Cache distribuído** — uso de **Redis** para otimizar acessos e reduzir carga em consultas repetitivas.
-* **Autenticação e Autorização** — baseada em **Keycloak**, com suporte a OAuth2/OpenID Connect.
-* **APIs RESTful** — endpoints expostos para CRUD de entidades e fluxo de negócios (ex.: criação de pedidos).
-* **Testes Automatizados** — cobertura com **JUnit 5** e **Mockito**.
-* **Monitoramento** — suporte ao **Spring Actuator**, permitindo verificar métricas e saúde da aplicação.
-
 ---
 
 ## ⚙️ Pré-requisitos
