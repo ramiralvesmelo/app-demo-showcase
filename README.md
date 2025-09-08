@@ -77,6 +77,23 @@ docker compose -f infra/docker/docker-compose.yml logs -f app-demo
 
 ---
 
+### 📍 Acesso pelo Host (Windows/Linux)
+
+Para acessar o **Keycloak** pelo **nome do serviço** `keycloak` a partir do **host**, adicione a entrada no arquivo *hosts* do sistema:
+
+```text
+127.0.0.1   keycloak
+```
+
+**Caminhos dos arquivos de hosts:**
+
+* 🪟 **Windows:** `C:\Windows\System32\drivers\etc\hosts`
+* 🐧 **Linux:** `/etc/hosts`
+
+> 📌 Observação: dentro da **rede do Docker Compose**, o DNS já resolve `keycloak`. O ajuste acima é apenas para o **host** conseguir acessar `http://keycloak:8081/` (útil quando o *issuer* do token ou a documentação referem-se a `keycloak:8081`).
+
+---
+
 ## 🛢️ Modelo de Dados e Estrutura de Entidades
 
 O modelo de dados da aplicação foi desenhado para refletir um fluxo simplificado de **ERP**, abrangendo as principais entidades de negócio:
