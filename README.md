@@ -28,8 +28,6 @@ O **app-demo** é uma aplicação de demonstração que simula um sistema **ERP 
 
 O projeto também conta com um workflow de CI/CD totalmente automatizado no GitHub Actions, responsável por assegurar a **qualidade do código**, manter a **cobertura de testes**, realizar **análises estáticas** como SonarCloud e CodeCov, gerar o **SBOM** (Software Bill of Materials) e garantir a entrega contínua de artefatos e imagens Docker.
 
-![Integração do App Demo](infra/img/app-demo-integration.drawio.png)
-
 ---
 
 ## ⚙️ Pré-requisitos
@@ -61,6 +59,8 @@ docker compose -f infra/docker/docker-compose.yml logs -f app-demo
 ---
 
 ## 🌐 URLs de Acesso
+
+![Integração do App Demo](infra/img/app-demo-integration.drawio.png)
 
 | Serviço         | URL / Endereço                                                                 | Usuário | Senha   |
 | --------------- | ------------------------------------------------------------------------------ | ------- | ------- |
