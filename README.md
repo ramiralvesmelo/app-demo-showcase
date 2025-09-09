@@ -32,26 +32,55 @@ O projeto também conta com um workflow de CI/CD totalmente automatizado no GitH
 
 ## ⚙️ Pré-requisitos
 
-* [Docker](https://www.docker.com/) MCP CLI v0.16.0 ou superior
+Antes de começar, certifique-se de ter as seguintes ferramentas instaladas em sua máquina:
+
+* [Docker](https://www.docker.com/get-started) v20.10 ou superior
+* [Git Client](https://git-scm.com/downloads) v2.30 ou superior
+
+---
+
+### 📍 Acesso pelo Host (Windows/Linux)
+
+Para acessar o **Keycloak** pelo **nome do serviço** `keycloak` a partir do **host**, adicione a entrada no arquivo *hosts* do sistema:
+
+```text
+127.0.0.1   keycloak
+```
+
+**Caminhos dos arquivos de hosts:**
+
+* 🪟 **Windows:** `C:\Windows\System32\drivers\etc\hosts`
+* 🐧 **Linux:** `/etc/hosts`
+
+> ℹ️ **Nota Importante:** dentro da rede interna do **Docker Compose**, o DNS já resolve automaticamente o nome `keycloak`. A modificação no arquivo *hosts* é necessária apenas para permitir que o **host** acesse `http://keycloak:8081/` — especialmente útil quando o *issuer* do token faz referência a esse endereço.
 
 ---
 
 ## 🚀 Como Inicializar o Projeto
 
-Para facilitar o processo de desenvolvimento, utilize os comandos abaixo com o **Docker Compose** já configurado em `infra/docker/docker-compose.yml`:
+Abaixo segue um passo a passo para inicializar a API.
+
+### 📥 Clonar o projeto
+
+```bash
+git clone https://github.com/ramiralvesmelo/app-demo-showcase.git
+cd app-demo-showcase
+```
 
 ### 🟢 Subir todos os serviços em segundo plano
+
 ```bash
 docker compose -f infra/docker/docker-compose.yml up -d
 ```
 
 ### 🔴 Derrubar todos os serviços e containers
-```bash
 
+```bash
 docker compose -f infra/docker/docker-compose.yml down
 ```
 
 ### 📜 Visualizar logs do container principal da aplicação
+
 ```bash
 docker compose -f infra/docker/docker-compose.yml logs -f app-demo
 ```
@@ -77,30 +106,36 @@ docker compose -f infra/docker/docker-compose.yml logs -f app-demo
 
 ---
 
-### 📍 Acesso pelo Host (Windows/Linux)
+### 🔐 Authorization Code Flow com PKCE (Swagger UI)
 
-Para acessar o **Keycloak** pelo **nome do serviço** `keycloak` a partir do **host**, adicione a entrada no arquivo *hosts* do sistema:
+```mermaid
+sequenceDiagram
+  autonumber
+  participant U as Usuário
+  participant SW as Swagger UI (Cliente Público)
+  participant AS as Authorization Server (Keycloak)
+  participant RS as API (Resource Server)
 
-```text
-127.0.0.1   keycloak
+  U->>SW: Clica em "Authorize" (OAuth2)
+  SW->>AS: GET /authorize?response_type=code&client_id=...&redirect_uri=...&scope=...&state=xyz&code_challenge=CH&code_challenge_method=S256
+  AS->>U: Exibe tela de login/consentimento
+  U->>AS: Envia credenciais / concede consentimento
+  AS-->>SW: 302 redirect para redirect_uri?code=ABC&state=xyz
+  Note right of AS: Code de uso único e curto prazo
+  SW->>AS: POST /token\n grant_type=authorization_code\n code=ABC\n redirect_uri=...\n client_id=...\n code_verifier=V
+  Note right of AS: Valida PKCE: base64url(SHA256(V)) == CH
+  AS-->>SW: 200 { access_token, id_token?, refresh_token? }
+  SW->>RS: GET /api/** com Authorization: Bearer access_token
+  RS->>AS: (opcional) JWKS para validar assinatura
+  RS-->>SW: 200 OK (dados protegidos)
 ```
 
-**Caminhos dos arquivos de hosts:**
+> 💡 **Observações**
+>
+> * **PKCE (S256):** o cliente comprova a posse enviando o `code_verifier`, que deve corresponder ao `code_challenge` informado na requisição de autorização.
+> * **Cliente público (Swagger UI):** por se tratar de um cliente sem backend seguro, geralmente não utiliza `client_secret`.
+> * **Tokens:** o `access_token` é sempre retornado; o `id_token` (para OpenID Connect) e o `refresh_token` podem ou não ser emitidos, de acordo com as políticas do provedor de identidade.
 
-* 🪟 **Windows:** `C:\Windows\System32\drivers\etc\hosts`
-* 🐧 **Linux:** `/etc/hosts`
-
-> 📌 Observação: dentro da **rede do Docker Compose**, o DNS já resolve `keycloak`. O ajuste acima é apenas para o **host** conseguir acessar `http://keycloak:8081/` (útil quando o *issuer* do token ou a documentação referem-se a `keycloak:8081`).
-
----
-
-## 🛢️ Modelo de Dados e Estrutura de Entidades
-
-O modelo de dados da aplicação foi desenhado para refletir um fluxo simplificado de **ERP**, abrangendo as principais entidades de negócio:
-
-* 👥 **Clientes** — informações cadastrais de clientes.
-* 📦 **Produtos & Estoque** — catálogo de produtos com controle de disponibilidade.
-* 🛒 **Pedidos & Vendas** — registro de pedidos, itens e totalização.
 
 ### 📊 Diagrama Entidade-Relacionamento (MER)
 
