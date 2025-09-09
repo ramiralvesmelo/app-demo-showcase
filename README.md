@@ -24,9 +24,9 @@
 
 # 📘 Sobre o Projeto
 
-O **app-demo** é uma aplicação de demonstração que simula um sistema **ERP (Enterprise Resource Planning)** em pequena escala. Ele foi desenvolvido como base de estudos e treinamentos, oferecendo uma arquitetura modular e integrando diversos recursos práticos do ecossistema Java e Spring Boot. 
+O **app-demo** é uma aplicação de demonstração de um ERP em pequena escala, criada para estudos e treinamentos. Possui arquitetura modular e utiliza frameworks como: Spring Boot, Spring Security, JPA/Hibernate, Spring Cache, Swagger/OpenAPI, JUnit 5 e Mockito.
 
-O projeto também conta com um workflow de CI/CD totalmente automatizado no GitHub Actions, responsável por assegurar a **qualidade do código**, manter a **cobertura de testes**, realizar **análises estáticas** como SonarCloud e CodeCov, gerar o **SBOM** (Software Bill of Materials) e garantir a entrega contínua de artefatos e imagens Docker.
+O projeto também conta com um **workflow de CI/CD** totalmente automatizado no GitHub Actions, responsável por assegurar a **qualidade do código**, manter a **cobertura de testes**, realizar **análises estáticas** como SonarCloud e CodeCov, gerar o SBOM (Software Bill of Materials) e garantir a **entrega contínua** de artefatos e imagens Docker.
 
 ---
 
