@@ -116,18 +116,17 @@ sequenceDiagram
   participant AS as Authorization Server (Keycloak)
   participant RS as API (Resource Server)
 
-  U->>SW: Clica em "Authorize" (OAuth2)
-  SW->>AS: GET /authorize?response_type=code&client_id=...&redirect_uri=...&scope=...&state=xyz&code_challenge=CH&code_challenge_method=S256
-  AS->>U: Exibe tela de login/consentimento
-  U->>AS: Envia credenciais / concede consentimento
-  AS-->>SW: 302 redirect para redirect_uri?code=ABC&state=xyz
-  Note right of AS: Code de uso único e curto prazo
-  SW->>AS: POST /token\n grant_type=authorization_code\n code=ABC\n redirect_uri=...\n client_id=...\n code_verifier=V
-  Note right of AS: Valida PKCE: base64url(SHA256(V)) == CH
-  AS-->>SW: 200 { access_token, id_token?, refresh_token? }
-  SW->>RS: GET /api/** com Authorization: Bearer access_token
-  RS->>AS: (opcional) JWKS para validar assinatura
-  RS-->>SW: 200 OK (dados protegidos)
+  U->>SW: Clica em autenticar
+  SW-->>SW: Gera Code Verifier e Code Challenge
+  SW->>AS: Envia Authorization Code Request + Code Challenge
+  AS->>U: Redireciona para tela de login
+  U->>AS: Usuário envia credenciais de autenticação
+  AS->>SW: Authorization Server valida credenciais se OK, devolve Authorization Code
+  SW->>AS: Swagger UI envia Authorization Code + Code Verifier
+  AS-->>AS: Verifica se Code Verifier "bate" com Code Challenge
+  AS->>SW: Retorna o Access Token  
+  SW-->>RS: 200 OK (dados protegidos)
+
 ```
 
 > 💡 **Observações**
