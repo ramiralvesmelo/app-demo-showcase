@@ -131,9 +131,13 @@ sequenceDiagram
 
 > 💡 **Observações**
 >
-> * **PKCE (S256):** o cliente comprova a posse enviando o `code_verifier`, que deve corresponder ao `code_challenge` informado na requisição de autorização.
-> * **Cliente público (Swagger UI):** por se tratar de um cliente sem backend seguro, geralmente não utiliza `client_secret`.
-> * **Tokens:** o `access_token` é sempre retornado; o `id_token` (para OpenID Connect) e o `refresh_token` podem ou não ser emitidos, de acordo com as políticas do provedor de identidade.
+> * O **Authorization Server** emite um authorization code — um “ticket” de uso único, vinculado ao cliente (e ao redirect_uri), com validade curta (ex.: 30–60 s).
+
+> * No PKCE, o **Code Verifier** é uma string aleatória e secreta gerada no cliente. O **Code Challenge** é derivado do verifier — normalmente `BASE64URL(SHA-256(verifier))`.
+
+> * **COM PKCE** o `client_secret` fica no Authorization Server.
+
+> * **SEM PKCE** o `client_secret` fica no Client.
 
 
 ### 📊 Diagrama Entidade-Relacionamento (MER)
