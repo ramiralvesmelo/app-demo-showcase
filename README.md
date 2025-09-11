@@ -1,21 +1,21 @@
-# 📘 App Demo ShowCase
+# 📘 App Api ShowCase
 
 [![Maven Central](https://img.shields.io/maven-central/v/org.springframework.boot/spring-boot-starter.svg?logo=apache-maven)](https://search.maven.org/artifact/org.springframework.boot/spring-boot-starter)
 [![Java](https://img.shields.io/badge/Java-21-blue.svg?logo=java)](https://adoptium.net/)
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.5.5-brightgreen.svg?logo=springboot)](https://spring.io/projects/spring-boot)
-[![Coverage Status](https://img.shields.io/codecov/c/github/ramiralvesmelo/app-demo?logo=codecov)](https://app.codecov.io/gh/ramiralvesmelo/app-demo)
+[![Coverage Status](https://img.shields.io/codecov/c/github/ramiralvesmelo/app-api?logo=codecov)](https://app.codecov.io/gh/ramiralvesmelo/app-api)
 
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=ramiralvesmelo_app-demo&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=ramiralvesmelo_app-demo)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=ramiralvesmelo_app-demo&metric=bugs)](https://sonarcloud.io/summary/new_code?id=ramiralvesmelo_app-demo)
-[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=ramiralvesmelo_app-demo&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=ramiralvesmelo_app-demo)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=ramiralvesmelo_app-demo&metric=coverage)](https://sonarcloud.io/summary/new_code?id=ramiralvesmelo_app-demo)
-[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=ramiralvesmelo_app-demo&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=ramiralvesmelo_app-demo)
-[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=ramiralvesmelo_app-demo&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=ramiralvesmelo_app-demo)
-[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=ramiralvesmelo_app-demo&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=ramiralvesmelo_app-demo)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=ramiralvesmelo_app-demo&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=ramiralvesmelo_app-demo)
-[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=ramiralvesmelo_app-demo&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=ramiralvesmelo_app-demo)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=ramiralvesmelo_app-demo&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=ramiralvesmelo_app-demo)
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=ramiralvesmelo_app-demo&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=ramiralvesmelo_app-demo)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=ramiralvesmelo_app-api&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=ramiralvesmelo_app-api)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=ramiralvesmelo_app-api&metric=bugs)](https://sonarcloud.io/summary/new_code?id=ramiralvesmelo_app-api)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=ramiralvesmelo_app-api&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=ramiralvesmelo_app-api)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=ramiralvesmelo_app-api&metric=coverage)](https://sonarcloud.io/summary/new_code?id=ramiralvesmelo_app-api)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=ramiralvesmelo_app-api&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=ramiralvesmelo_app-api)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=ramiralvesmelo_app-api&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=ramiralvesmelo_app-api)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=ramiralvesmelo_app-api&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=ramiralvesmelo_app-api)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=ramiralvesmelo_app-api&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=ramiralvesmelo_app-api)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=ramiralvesmelo_app-api&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=ramiralvesmelo_app-api)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=ramiralvesmelo_app-api&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=ramiralvesmelo_app-api)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=ramiralvesmelo_app-api&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=ramiralvesmelo_app-api)
 
 ⚠️ Importante: badges referentes ao projeto original
 
@@ -23,11 +23,11 @@
 
 # 📘 Sobre o Projeto
 
-O **app-demo** é uma aplicação de demonstração de um ERP em pequena escala, criada para estudos e treinamentos. Possui arquitetura modular e utiliza frameworks como: Java 24, Spring Boot 3.3.5, Spring Security, JPA/Hibernate, Spring Cache, Swagger/OpenAPI, JUnit 5 e Mockito.
+O **app-api** é uma aplicação de demonstração de um ERP em pequena escala, criada para estudos e treinamentos. Possui arquitetura modular e utiliza frameworks como: Java 24, Spring Boot 3.3.5, Spring Security, JPA/Hibernate, Spring Cache, Swagger/OpenAPI, JUnit 5 e Mockito.
 
 O projeto também conta com um **workflow de CI/CD** totalmente automatizado no GitHub Actions, responsável por assegurar a **qualidade do código**, manter a **cobertura de testes**, realizar **análises estáticas** como SonarCloud e CodeCov, gerar o SBOM (Software Bill of Materials) e garantir a **entrega contínua** de artefatos e imagens Docker.
 
-![Integração do App Demo](infra/img/app-demo-integration.drawio.png)
+![Integração do App Api](infra/img/app-demo-integration.drawio.png)
 
 ---
 
@@ -64,8 +64,8 @@ Abaixo segue um passo a passo para inicializar a API.
 ### 📥 Clonar o projeto
 
 ```bash
-git clone https://github.com/ramiralvesmelo/app-demo-showcase.git
-cd app-demo-showcase
+git clone https://github.com/ramiralvesmelo/app-api-showcase.git
+cd app-api-showcase
 ```
 
 ### 🟢 Subir todos os serviços em segundo plano
@@ -83,25 +83,30 @@ docker compose -f infra/docker/docker-compose.yml down
 ### 📜 Visualizar logs do container principal da aplicação
 
 ```bash
-docker compose -f infra/docker/docker-compose.yml logs -f app-demo
+docker compose -f infra/docker/docker-compose.yml logs -f app-api
 ```
 
 ---
 
-## 🌐 URLs de Acesso
+# 🌐 URLs de Acesso
 
-| Serviço         | URL / Endereço                                                                 | Usuário | Senha   |
-| --------------- | ------------------------------------------------------------------------------ | ------- | ------- |
-| **App-demo**    | [http://localhost:8080](http://localhost:8080)                                 | -       | -       |
-| **Swagger UI**  | [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html) | -       | -       |
-| **Keycloak**    | [http://keycloak:8081](http://keycloak:8081)                                   | admin   | admin   |
-| **Healthcheck** | [http://keycloak:8080/actuator/health](http://keycloak:8080/actuator/health)   | -       | -       |
-| **PostgreSQL**  | `jdbc:postgresql://localhost:5432/appdb`                                       | appuser | apppass |
-| **H2**          | `jdbc:h2:mem:testdb`                                                           | sa      | -       |
-| **H2 Console**  | [/h2-console](http://localhost:8080/h2-console)                                | sa      | -       |
-| **Redis**       | `localhost:6379`                                                               | -       | -       |
-| **Redis UI**    | [http://localhost:8082](http://localhost:8082)                                 | -       | -       |
-| **Kafka UI**    | [http://localhost:8083/ui/](http://localhost:8083/ui/)                         | -       | -       |
+| Serviço           | URL / Endereço                                                                 | Usuário    | Senha     |
+| ----------------- | ------------------------------------------------------------------------------ | ---------- | --------- |
+| **app-api**      | [http://localhost:8080](http://localhost:8080)                                 | -          | -         |
+| **Swagger UI**    | [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html) | -          | -         |
+| **App-audit**     | [http://localhost:8084](http://localhost:8084)                                 | -          | -         |
+| **Keycloak**      | [http://localhost:8081](http://localhost:8081)                                 | admin      | admin     |
+| **Healthcheck**   | [http://localhost:8080/actuator/health](http://localhost:8080/actuator/health) | -          | -         |
+| **PostgreSQL**    | `jdbc:postgresql://localhost:5432/appdb`                                       | appuser    | apppass   |
+| **H2**            | `jdbc:h2:mem:testdb`                                                           | sa         | -         |
+| **H2 Console**    | [/h2-console](http://localhost:8080/h2-console)                                | sa         | -         |
+| **Redis**         | `localhost:6379`                                                               | -          | -         |
+| **Redis UI**      | [http://localhost:8082](http://localhost:8082)                                 | admin      | admin     |
+| **Kafka**         | `localhost:9092`                                                               | -          | -         |
+| **Kafka UI**      | [http://localhost:8083/ui/](http://localhost:8083/ui/)                         | -          | -         |
+| **MongoDB**       | `mongodb://mongoadmin:mongopass@localhost:27017/auditdb?authSource=admin`      | mongoadmin | mongopass |
+| **Mongo Express** | [http://localhost:8085](http://localhost:8085)                                 | admin      | admin     |
+| **Zookeeper**     | `localhost:2181`                                                               | -          | -         |
 
 ---
 
@@ -260,7 +265,7 @@ gitGraph
 ## 🗂️ Estrutura do Projeto
 
 ```text
-app-demo/
+app-api/
 ├── .github/                               		# Configurações do GitHub
 │   └── workflows/                         		# Actions (CI)
 │       └── maven.yml                      		# Pipeline Maven (build, testes, etc.)
