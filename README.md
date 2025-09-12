@@ -86,6 +86,8 @@ docker compose -f infra/docker/docker-compose.yml down
 docker compose -f infra/docker/docker-compose.yml logs -f app-api
 ```
 
+![Integração do App Api](infra/img/app-demo-up.gif)
+
 ---
 
 # 🌐 URLs de Acesso
