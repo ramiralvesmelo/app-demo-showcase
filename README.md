@@ -59,7 +59,7 @@ Para acessar o **Keycloak** pelo **nome do serviço** `keycloak` a partir do **h
 
 ## 🚀 Como Inicializar o Projeto
 
-
+<video src="app-api.webm" controls width="600"></video>
 
 Abaixo segue um passo a passo para inicializar a API.
 
