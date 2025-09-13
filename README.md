@@ -94,7 +94,7 @@ docker compose -f infra/docker/docker-compose.yml logs -f app-api
 
 | Serviço           | URL / Endereço                                                                 | Usuário    | Senha     |
 | ----------------- | ------------------------------------------------------------------------------ | ---------- | --------- |
-| **app-api**      | [http://localhost:8080](http://localhost:8080)                                 | -          | -         |
+| **app-api**       | [http://localhost:8080](http://localhost:8080)                                 | -          | -         |
 | **Swagger UI**    | [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html) | -          | -         |
 | **App-audit**     | [http://localhost:8084](http://localhost:8084)                                 | -          | -         |
 | **Keycloak**      | [http://localhost:8081](http://localhost:8081)                                 | admin      | admin     |
@@ -109,6 +109,8 @@ docker compose -f infra/docker/docker-compose.yml logs -f app-api
 | **MongoDB**       | `mongodb://mongoadmin:mongopass@localhost:27017/auditdb?authSource=admin`      | mongoadmin | mongopass |
 | **Mongo Express** | [http://localhost:8085](http://localhost:8085)                                 | admin      | admin     |
 | **Zookeeper**     | `localhost:2181`                                                               | -          | -         |
+| **MinIO (API S3)**| [http://localhost:9000](http://localhost:9000)                                 | minioadmin | minioadmin|
+| **MinIO Console** | [http://localhost:9001](http://localhost:9001)                                 | minioadmin | minioadmin|
 
 ---
 
