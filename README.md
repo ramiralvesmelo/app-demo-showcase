@@ -59,8 +59,6 @@ Para acessar o **Keycloak** pelo **nome do serviço** `keycloak` a partir do **h
 
 ## 🚀 Como Inicializar o Projeto
 
-![Integração do App Api](infra/img/app-demo-up.gif)
-
 Abaixo segue um passo a passo para inicializar a API.
 
 ### 📥 Clonar o projeto
@@ -113,6 +111,8 @@ docker compose -f infra/docker/docker-compose.yml logs -f app-api
 | **MinIO Console** | [http://localhost:9001](http://localhost:9001)                                 | minioadmin | minioadmin|
 
 ---
+
+![Integração do App Api](infra/img/app-demo-up.gif)
 
 ### 🔐 Authorization Code Flow com PKCE (Swagger UI)
 
